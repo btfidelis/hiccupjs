@@ -1,5 +1,23 @@
-export default (appEl, htmlDataStructure) => 
-  htmlDataStructureToString(...htmlDataStructure)
+export default (el, dt) => rendy(el, dt).modify(s => s)
+
+const rendy = (appEl, htmlDataStructure) => ({
+  get state() {
+    return htmlDataStructureToString(...htmlDataStructure)
+  },
+
+  modify(fn) {
+    console.warn(htmlDataStructure)
+    const nState = fn(this.state)
+    update(appEl, nState)
+    return rendy(appEl, nState)
+  }
+
+})
+
+const update = (element, component) => {
+  element.innerHTML = ''
+  element.appendChild(component)
+}
 
 const oneTagElements = new Set([
   'input'
@@ -28,24 +46,25 @@ return el
 }
 
 const htmlDataStructureToString = (tag, attrs, ...value) => {
-const parsed = mergeElementWithAttrs(parseTag(tag), attrs)
-const resolveValue = val => {
-return val
-  .map(x => {
-    if (x.length === 0 && Array.isArray(x)) {
-      return ''
-    }
+  const parsed = mergeElementWithAttrs(parseTag(tag), attrs)
+  const resolveValue = val => {
+    console.warn(val)
+    return val
+      .map(x => {
+        if (Array.isArray(x) && x.length === 0 ) {
+          return ''
+        }
 
-    return x
-  })
-  .map(x => {
-    if (typeof x === 'string') {  
-      return val
-    }
-  
-    return htmlDataStructureToString(...x)
-  })
-} 
+        return x
+      })
+      .map(x => {
+        if (typeof x === 'string') {  
+          return val
+        }
+      
+        return htmlDataStructureToString(...x)
+      })
+  } 
 
 return resolveValue(value)
   .reduce((ac, x) => { 

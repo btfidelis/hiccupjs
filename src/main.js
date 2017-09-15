@@ -17,18 +17,18 @@ component.inputs() = // []
 const todoList = ['ul', {}, []]
 
 const click = (e) => {
-  console.warn(e, form)
+  console.warn(e, app)
   // todoList.modify(
   //   ['ul', {}, todoList.get('li').concat(e.component.input('list'))]
   // )
 }
 
-const form = ['div', {}, 
-    ['label', {for: 'abc'}, 'Digite a tarefa: '],
-    ['input', {type: 'text', id: 'abc'}, ''],
-    ['button', { click }, 'enviar'  ]
+const form = ['div', {},
+  todoList,
+  ['label', {for: 'abc'}, 'Digite a tarefa: '],
+  ['input', {type: 'text', id: 'abc'}, ''],
+  ['button', { click }, 'enviar'  ]
 ]
 
-console.warn(form)
 
-r(document.getElementById('app'), form) 
+const app = r(document.getElementById('app'), form) 
