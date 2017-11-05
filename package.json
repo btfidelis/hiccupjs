@@ -1,8 +1,8 @@
 {
   "name": "randy",
   "version": "1.0.0",
-  "description": "Small and fast and (mostly) functional ui component lib",
-  "main": "src/main.js",
+  "description": "Small lib for that allows hml style element creation",
+  "main": "src/rendy.js",
   "scripts": {
     "start": "webpack-dev-server --hot --inline",
     "test": "echo \"Error: no test specified\" && exit 1"

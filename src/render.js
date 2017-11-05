@@ -1,17 +1,12 @@
-export default (el, dt) => rendy(el, dt).modify(s => s)
+export default (el, dt) => rendy(el, dt).apply(s => s)
 
 const rendy = (appEl, htmlDataStructure) => ({
-  get state() {
-    return htmlDataStructureToString(...htmlDataStructure)
-  },
-
-  modify(fn) {
+  apply(fn) {
     console.warn(htmlDataStructure)
     const nState = fn(this.state)
     update(appEl, nState)
     return rendy(appEl, nState)
   }
-
 })
 
 const update = (element, component) => {
@@ -26,23 +21,32 @@ const oneTagElements = new Set([
 const parseTag = htmlTag => document.createElement(htmlTag)
 const isFunction = x => typeof x === 'function'
 
+/**
+ * Adds a dictionary representation of the HTMLElement
+ * to the element
+ * EX:
+ * input | { click: (event) => alert('hello') }
+ * 
+ * @param {HTMLElement} el
+ * @param {Object} attrs 
+ */
 const mergeElementWithAttrs = (el, attrs) => {
-if (oneTagElements.has(el.tagName.toLowerCase())) {
-  attrs.value = ''
-}
+  if (oneTagElements.has(el.tagName.toLowerCase())) {
+    attrs.value = ''
+  }
 
-Object
-  .entries(attrs)
-  .forEach(ent => { 
-    if (isFunction(ent[1])) {
-      const [ eventName, fn ] = ent
-      el.addEventListener(eventName.toLowerCase(), fn)
-    } else {
-      el.setAttribute(...ent)
-    }
-  })
+  Object
+    .entries(attrs)
+    .forEach(ent => { 
+      if (isFunction(ent[1])) {
+        const [ eventName, fn ] = ent
+        el.addEventListener(eventName.toLowerCase(), fn)
+      } else {
+        el.setAttribute(...ent)
+      }
+    })
 
-return el
+  return el
 }
 
 const htmlDataStructureToString = (tag, attrs, ...value) => {
