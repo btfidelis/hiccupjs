@@ -1,4 +1,4 @@
-import r from './render'
+import hiccup from './hiccup'
 
 const todoList = ['ul', {}, []]
 
@@ -13,4 +13,4 @@ const form = ['div', {},
 ]
 
 
-const app = r(document.getElementById('app'), form) 
+const app = hiccup(document.getElementById('app'), form) 

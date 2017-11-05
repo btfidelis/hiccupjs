@@ -1,18 +1,18 @@
 {
-  "name": "randy",
+  "name": "hiccupjs",
   "version": "1.0.0",
-  "description": "Small lib for that allows hml style element creation",
-  "main": "src/rendy.js",
+  "description": "Small lib for that allows hiccup style element creation",
+  "main": "src/hiccup.js",
   "scripts": {
     "start": "webpack-dev-server --hot --inline",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/btfidelis/randy.git"
+    "url": "git+https://github.com/btfidelis/hiccupjs.git"
   },
   "keywords": [
-    "components",
+    "hiccup",
     "ui",
     "small",
     "fast"
@@ -20,9 +20,9 @@
   "author": "bruno.fidelis004@gmail.com",
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/btfidelis/randy/issues"
+    "url": "https://github.com/btfidelis/hiccupjs/issues"
   },
-  "homepage": "https://github.com/btfidelis/randy#readme",
+  "homepage": "https://github.com/btfidelis/hiccupjs#readme",
   "devDependencies": {
     "babel-core": "^6.26.0",
     "babel-loader": "^7.1.2",

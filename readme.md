@@ -1,14 +1,14 @@
-# Rendy
+# Hiccup.js
 Small lib for that allows hml style element creation
 
 # Installation
 ```sh 
-$ npm i rendy
+$ npm i hiccupjs
 ```
 
 # Example usage
 ```js
-  import r from 'rendy'
+  import r from 'hiccupjs'
 
   const form = ['div', {},
     ['label', {for: 'abc'}, 'type something: '],

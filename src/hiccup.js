@@ -1,13 +1,5 @@
-export default (el, dt) => rendy(el, dt).apply(s => s)
-
-const rendy = (appEl, htmlDataStructure) => ({
-  apply(fn) {
-    console.warn(htmlDataStructure)
-    const nState = fn(this.state)
-    update(appEl, nState)
-    return rendy(appEl, nState)
-  }
-})
+export default (el, dt) => 
+  update(el, htmlDataStructureToString(...dt))
 
 const update = (element, component) => {
   element.innerHTML = ''
@@ -49,6 +41,12 @@ const mergeElementWithAttrs = (el, attrs) => {
   return el
 }
 
+/**
+ * Entry point
+ * @param {string} tag 
+ * @param {object} attrs 
+ * @param {object} value 
+ */
 const htmlDataStructureToString = (tag, attrs, ...value) => {
   const parsed = mergeElementWithAttrs(parseTag(tag), attrs)
   const resolveValue = val => {
@@ -70,9 +68,9 @@ const htmlDataStructureToString = (tag, attrs, ...value) => {
       })
   } 
 
-return resolveValue(value)
-  .reduce((ac, x) => { 
-    ac.append(x)
-    return ac
-  }, parsed)
+  return resolveValue(value)
+    .reduce((ac, x) => { 
+      ac.append(x)
+      return ac
+    }, parsed)
 }
