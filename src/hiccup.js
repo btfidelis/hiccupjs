@@ -50,7 +50,6 @@ const mergeElementWithAttrs = (el, attrs) => {
 const htmlDataStructureToString = (tag, attrs, ...value) => {
   const parsed = mergeElementWithAttrs(parseTag(tag), attrs)
   const resolveValue = val => {
-    console.warn(val)
     return val
       .map(x => {
         if (Array.isArray(x) && x.length === 0 ) {
