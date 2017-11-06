@@ -1,6 +1,6 @@
 {
   "name": "hiccupjs",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Small lib for that allows hiccup style element creation",
   "main": "lib/hiccup.js",
   "scripts": {
