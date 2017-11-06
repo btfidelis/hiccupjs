@@ -8,7 +8,7 @@ $ npm i hiccupjs
 
 # Example usage
 ```js
-  import r from 'hiccupjs'
+  import h from 'hiccupjs'
 
   const form = ['div', {},
     ['label', {for: 'abc'}, 'type something: '],
@@ -17,7 +17,7 @@ $ npm i hiccupjs
   ]
   
   // renders the form
-  const formHtmlElment = r(document.getElementById('app'), form) 
+  const formHtmlElment = h(document.getElementById('app'), form) 
 ```
 
 # Todo
