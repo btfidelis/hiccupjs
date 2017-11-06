@@ -3,16 +3,16 @@ const { resolve } = require('path')
 const plugins = () => {
   if (process.env.NODE_ENV === 'production') {
     return [
-      webpack.optimize.UglifyJsPlugin({ minize: true })
+      new webpack.optimize.UglifyJsPlugin({ minize: true })
     ]
   }
-  
+
   return []
 }
 
 
 module.exports = {
-  entry: "./src/main",
+  entry: "./src/hiccup.js",
   output: {
     path: resolve(__dirname, "lib"),
     filename: "hiccup.js",
@@ -24,7 +24,7 @@ module.exports = {
     rules: [
       {
         test: /\.js$/,
-        exclude: /(node_modules|bower_components)/,
+        exclude: /(node_modules)/,
         use: {
           loader: 'babel-loader',
           options: {
