@@ -60,7 +60,7 @@ const htmlDataStructureToString = (tag, attrs, ...value) => {
       })
       .map(x => {
         if (typeof x === 'string') {  
-          return val
+          return x
         }
       
         return htmlDataStructureToString(...x)
