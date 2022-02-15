@@ -24,7 +24,7 @@ Hiccup data structures are lists containing an element name, an attribute map, a
 ```js
 const boldMonth = ['p', {},
   ['b', {}, 'February'],
-  ' 15th, 2022'
+  ['span', {}, ' 15th, 2022']
 ];
 ```
 
